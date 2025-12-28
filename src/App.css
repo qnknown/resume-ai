@@ -777,11 +777,60 @@ body {
 }
 
 .footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 48px 0;
-  text-align: center;
+  padding: 32px 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-nav a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--text-main);
+}
+
+.footer-copyright {
   font-size: 14px;
   color: var(--text-dim);
+}
+
+.footer-lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.lang-active {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.lang-divider {
+  color: var(--text-dim);
+}
+
+.lang-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lang-link:hover {
+  color: var(--text-main);
 }
 
 .blur-shape {

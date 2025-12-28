@@ -10,9 +10,9 @@ export default function LandingPage() {
         <div className="container header-content">
           <div className="logo">R | Resume AI</div>
           <nav className="nav-links">
-            <a href="#product" className="nav-link">Про продукт</a>
-            <a href="#features" className="nav-link">Можливості</a>
             <a href="#how" className="nav-link">Як це працює</a>
+            <a href="#features" className="nav-link">Що ви отримаєте</a>
+            <a href="#example" className="nav-link">Приклад</a>
             <a href="#pricing" className="nav-link">Ціни</a>
           </nav>
           <div className="header-actions">
@@ -280,7 +280,20 @@ export default function LandingPage() {
       </section>
 
       <footer className="footer">
-        © 2025 R | Resume AI
+        <div className="container footer-content">
+          <div className="footer-copyright">© 2025 Resume AI</div>
+          <nav className="footer-nav">
+            <a href="#how">Як це працює</a>
+            <a href="#features">Що ви отримаєте</a>
+            <a href="#example">Приклад</a>
+            <a href="#pricing">Ціни</a>
+          </nav>
+          <div className="footer-lang">
+            <span className="lang-active">UA</span>
+            <span className="lang-divider">|</span>
+            <a href="#" className="lang-link">EN</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
