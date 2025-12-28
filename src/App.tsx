@@ -24,31 +24,67 @@ export default function LandingPage() {
 
       <section className="container hero-section">
         <div className="hero-bg-glow" />
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="hero-title">
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
+          <motion.h1 
+            className="hero-title"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+            }}
+          >
             AI-аналіз резюме <span className="text-blue">для кращих шансів</span> на оффер
-          </h1>
-          <p className="hero-desc">
+          </motion.h1>
+          <motion.p 
+            className="hero-desc"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+            }}
+          >
             Resume AI використовує власні алгоритми, щоб порівняти ваше резюме з вакансією та дати чіткі рекомендації для підвищення шансів на працевлаштування за допомогою ШІ.
-          </p>
-          <div className="hero-features">
-            <div className="hero-feature-item">
-              <span className="hero-feature-icon">🎯</span>
-              <span>Аналіз під конкретну вакансію</span>
-            </div>
-            <div className="hero-feature-item">
-              <span className="hero-feature-icon">⚡</span>
-              <span>Результати за секунди</span>
-            </div>
-            <div className="hero-feature-item">
-              <span className="hero-feature-icon">✅</span>
-              <span>Зрозуміла оцінка і поради</span>
-            </div>
-          </div>
-          <div className="hero-actions">
+          </motion.p>
+          <motion.div 
+            className="hero-features"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
+            }}
+          >
+            {[
+              { icon: "🎯", text: "Аналіз під конкретну вакансію" },
+              { icon: "⚡", text: "Результати за секунди" },
+              { icon: "✅", text: "Зрозуміла оцінка і поради" }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                className="hero-feature-item"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0 }
+                }}
+              >
+                <span className="hero-feature-icon">{item.icon}</span>
+                <span>{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+          <motion.div 
+            className="hero-actions"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } }
+            }}
+          >
             <Button className="btn btn-primary">Почати аналіз резюме</Button>
             <Button variant="outline" className="btn btn-outline"><Eye size={16} /> Подивитись приклад</Button>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -129,14 +165,21 @@ export default function LandingPage() {
               title: "Отримайте AI-рекомендації",
               desc: "Миттєвий звіт зі скорингом, аналізом навичок та конкретними порадами щодо покращення вашого резюме."
             }].map((step, i) => (
-              <div key={i} className="step-item">
+              <motion.div
+                key={i}
+                className="step-item"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                viewport={{ once: true }}
+              >
                 <div className="step-icon-wrapper">
                   <step.icon size={28} />
                 </div>
                 <div className="step-number">Крок {i + 1}</div>
                 <div className="step-title">{step.title}</div>
                 <p className="step-desc">{step.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -168,11 +211,18 @@ export default function LandingPage() {
               title: "AI-рекомендації",
               desc: "Персоналізовані поради від штучного інтелекту для підвищення шансів на інтерв'ю."
             }].map((feature, i) => (
-              <div key={i} className="feature-item">
+              <motion.div
+                key={i}
+                className="feature-item"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
                 <feature.icon size={28} className="feature-icon" />
                 <div className="feature-title">{feature.title}</div>
                 <p className="feature-desc">{feature.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -184,22 +234,40 @@ export default function LandingPage() {
           <p className="section-subtitle">Як ми допомагаємо зробити ваше резюме більш професійним</p>
           
           <div className="example-comparison">
-            <div className="example-card example-before">
+            <motion.div
+              className="example-card example-before"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <div className="example-label">BEFORE</div>
               <p className="example-text">
                 "Відповідав за продажі в регіоні та спілкування з клієнтами. Робив звіти кожного місяця."
               </p>
-            </div>
+            </motion.div>
             
-            <div className="example-arrow">→</div>
+            <motion.div
+              className="example-arrow"
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              viewport={{ once: true }}
+            >→</motion.div>
             
-            <div className="example-card example-after">
+            <motion.div
+              className="example-card example-after"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <div className="example-label">AFTER</div>
               <div className="example-checkmark">✓</div>
               <p className="example-text">
                 "Збільшив обсяг продажів у регіоні на 25% за 6 місяців шляхом залучення 15 нових ключових клієнтів. Автоматизував щомісячну звітність."
               </p>
-            </div>
+            </motion.div>
           </div>
           
           <div className="example-note">
@@ -238,9 +306,13 @@ export default function LandingPage() {
               features: ["Необмежені аналізи", "Експорт PDF звітів", "Пріоритетна підтримка", "Всі Pro функції"],
               buttonText: "Обрати Premium"
             }].map((p, i) => (
-              <div
+              <motion.div
                 key={i}
                 className={`pricing-card ${p.highlight ? "pricing-card-highlight" : ""}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                viewport={{ once: true }}
               >
                 <div className="pricing-header">
                   <div className="pricing-plan-row">
@@ -259,7 +331,7 @@ export default function LandingPage() {
                   ))}
                 </ul>
                 <Button className={p.highlight ? "btn btn-primary pricing-btn" : "btn btn-outline pricing-btn"}>{p.buttonText}</Button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -267,7 +339,13 @@ export default function LandingPage() {
 
       <section className="cta-section">
         <div className="container">
-          <div className="cta-card">
+          <motion.div
+            className="cta-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <h2 className="cta-title">Готові покращити своє резюме?</h2>
             <p className="cta-subtitle">Почніть безкоштовно та отримайте результат вже сьогодні.</p>
             <div className="cta-actions">
@@ -275,7 +353,7 @@ export default function LandingPage() {
               <Button variant="outline" className="btn btn-outline">Увійти</Button>
             </div>
             <p className="cta-note">Без кредитної картки</p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
