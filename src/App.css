@@ -154,8 +154,8 @@ body {
 
 .hero-section {
   position: relative;
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 108px;
+  padding-bottom: 108px;
   display: grid;
   gap: 64px;
 }
